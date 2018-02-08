@@ -7,8 +7,13 @@ img: github.jpg # Add image post (optional)
 tags: [Github, SSH]
 ---
 ### 问题描述：
+
+连接github时，公钥出现问题。执行 
+``` bash
+$ssh -vT git@github.com
 ```
-连接github时，公钥出现问题。执行 ssh -vT git@github.com后出现如下显示：
+出现如下提示：
+``` bash
 OpenSSH_5.9p1 Debian-5ubuntu1.1, OpenSSL 1.0.1 14 Mar 2012
 debug1: Reading configuration data /etc/ssh/ssh_config
 debug1: /etc/ssh/ssh_config line 19: Applying options for *
@@ -57,7 +62,7 @@ Permission denied (publickey).
 ### 解决方法：
 
 生成RSA公钥并将公钥添加到GitHub的SSH Keys后：
-```
+```shell
 $eval "$(ssh-agent) -s"
 $ssh-add
 $ssh-add -l -E md5

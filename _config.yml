@@ -12,7 +12,7 @@ site-twitter: #if your site has a twitter account, enter it here
 author: Amosx # add your name
 author-img: amos.jpg # add your photo
 about-author: 信息安全/数据分析 # add description
-motto: Now is better than never, although never is often better than right now.
+motto: Now is better than never. Although never is often better than right now.
 github: amos-hsu # add your Github handle
 zhihu: WaterHsu
 linkedin: # add your Linkedin handle
@@ -26,6 +26,8 @@ analytics: # Google Analytics
 
 # Build Settings
 markdown: kramdown
+kramdown:
+  input: GFM
 plugins:
   - jekyll-sitemap
   - jekyll-paginate
@@ -34,5 +36,6 @@ plugins:
 paginate: 8
 paginate_path: "/page/:num"
 encoding: utf-8
-highlighter: pygments
+highlight: true
+highlighter: rouge
 exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock", "README.md"]
