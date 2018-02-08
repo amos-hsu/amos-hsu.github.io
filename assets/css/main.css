@@ -982,6 +982,12 @@ table tfoot td {
 .about p {
   font-size: 16px;
   margin: 0 0 10px;
+  font-family: 'PT Serif', serif;
+}
+.about p1 {
+  font-size: 14px;
+  margin: 0 0 10px;
+  font-family: 'PT Serif', serif;
 }
 
 .content-box {

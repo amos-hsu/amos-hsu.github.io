@@ -9,10 +9,11 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 site-twitter: #if your site has a twitter account, enter it here
 
 # Author Settings
-author: Amosx # add your name
+author: AMOSX # add your name
 author-img: amos.jpg # add your photo
-about-author: 信息安全/数据分析 # add description
-motto: Now is better than never. Although never is often better than right now.
+about-author: 信息安全 / 数据分析 # add description
+motto: Now is better than never.
+motto1: Although never is often better than right now.
 github: amos-hsu # add your Github handle
 zhihu: WaterHsu
 linkedin: # add your Linkedin handle
