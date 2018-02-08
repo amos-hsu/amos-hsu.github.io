@@ -3,12 +3,12 @@ layout: main
 ---
 <article class="article-page">
   <div class="page-content">
-    {% if page.img %}
+    <!--{% if page.img %}
     <div class="page-cover-image">
       <img class="page-image" src={{ "/assets/img/" | prepend: site.baseurl | append : page.img}} alt="{{page.title}}">
-    </div> <!-- End Page Cover Image -->
+    </div> 
     {% else %}
-    {% endif %}
+    {% endif %} <!-- End Page Cover Image -->
     <div class="wrap-content">
       <header class="header-page">
         <h1 class="page-title">{{page.title}}</h1>
@@ -16,15 +16,17 @@ layout: main
       </header>
       {{page.content | markdownify}}
       <div class="page-footer">
-        <div class="page-share">
+        <!-- <div class="page-share">
           <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
           <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
-          <a href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
-        </div>
+        </div> -->
         <div class="page-tag">
           {% for tag in page.tags %}
             <a href="{{site.baseurl}}/tags#{{tag}}" class="tag">&#35; {{ tag }}</a>
           {% endfor %}
+        </div>
+        <div class="tohome">
+          <a href="{{site.baseurl}}/" >返回主页 </a>
         </div>
       </div>
       {% include disqus.html %}
