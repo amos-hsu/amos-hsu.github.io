@@ -11,7 +11,7 @@ site-twitter: #if your site has a twitter account, enter it here
 # Author Settings
 author: Amosx # add your name
 author-img: amos.jpg # add your photo
-about-author: 信息安全/数据分析 # add description
+about-author: 技术博客/随笔 # add description
 motto: Now is better than never. Although never is often better than right now.
 github: amos-hsu # add your Github handle
 zhihu: WaterHsu
