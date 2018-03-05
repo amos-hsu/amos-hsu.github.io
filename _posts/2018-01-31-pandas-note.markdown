@@ -10,7 +10,7 @@ tags: [Github, SSH]
 
 在了解pandas数据结构的基础上，了解其常用功能。
 
-Jupyter Notebook原文：[pandas主要功能](http://nbviewer.jupyter.org/github/amos-hsu/Data-Analysis/blob/master/tools/pandas_notes.ipynb) 
+ >Jupyter Notebook原文：[pandas主要功能](http://nbviewer.jupyter.org/github/amos-hsu/Data-Analysis/blob/master/tools/pandas_notes.ipynb) 
 
 #### 1.重新索引（Reindexing）
 
