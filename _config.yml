@@ -1,4 +1,4 @@
-title: Amos Hsu
+title: 沉一叶的BLOG
 description: > # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
@@ -13,7 +13,6 @@ author: 沉一叶 # add your name
 author-img: amos.jpg # add your photo
 about-author: 技术博客 | 随笔 # add description
 motto: 一花一世界，一叶一菩提。
-motto1: 
 github: amos-hsu # add your Github handle
 zhihu: WaterHsu
 linkedin: # add your Linkedin handle
