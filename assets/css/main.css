@@ -980,14 +980,14 @@ table tfoot td {
 }
 
 .about p {
-  font-size: 16px;
+  font-size: 14px;
   margin: 0 0 10px;
   font-family: 'PT Serif', serif;
 }
 .about p1 {
   font-size: 14px;
   margin: 0 0 10px;
-  font-family: 'PT Serif', serif;
+  font-family:  courier;
 }
 
 .content-box {
@@ -1209,9 +1209,10 @@ a.newer-posts:hover {
 
 .page-cover-image {
   position: relative;
+  down: -100px;
   padding: 0;
   margin: 0;
-  max-height: 500px;
+  max-height: 400px;
   background-color: #fafafa;
   overflow: hidden;
 }
