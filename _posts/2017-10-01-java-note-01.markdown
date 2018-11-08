@@ -1,0 +1,54 @@
+---
+layout: post
+title: Java 笔记 1 - Java 数据类型
+date: 2017-10-01 14:14:20 +0300
+description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+img: software.jpg # Add image post (optional)
+tags: [Java]
+---
+# Java 基础
+
+数据类型
+
+包装类型
+
+八个基本类型：
+```Java
+boolean 1bit
+byte 8bit/1byte
+char 16bit/2byte
+short 16bit/2byte
+int 32bit/4byte
+float 32/4byte
+long 64/8byte
+double 64/8byte
+```
+
+基本类型都有对应的包装类型，使用自动装箱和拆箱
+
+缓存池
+new每次都会新建一个对象，
+```Java 
+Integer.valueof()
+```
+可能会使用缓存对象
+```Java
+Integer x = new Integer(123);
+Integer y = new Integer(123);
+System.out.println(x==y);    //false
+Integer z = Integer.valueOf(123);
+Integer k = Integer.valueOf(123);
+System.out.println(z == k); // true
+```
+编译器会在自动装箱过程中调用valueOf()方法，因此多个Integer实例使用自动装箱创建并且值相同，那么引用会指向相同的对象
+```Java
+Integer m = 123;
+Integer n = 123;
+System.out.println(m==n);    //true
+```
+Java8中Integer缓存池大小默认为-128-127
+
+
+
+
+
