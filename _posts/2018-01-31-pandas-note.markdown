@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Pandas 主要功能
+title: Pandas 笔记 - 主要功能
 date: 2018-01-31 14:14:20 +0300
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
 img: pandas.jpg # Add image post (optional)
-tags: [pandas, python]
+tags: [Pandas, Python]
 ---
-# pandas主要功能
+# Pandas 主要功能
 
 这是我使用 Jupyter notebook 写的笔记。
 原地址：[pandas主要功能](http://nbviewer.jupyter.org/github/amos-hsu/Data-Analysis/blob/master/tools/pandas_notes.ipynb)

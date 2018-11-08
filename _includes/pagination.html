@@ -22,6 +22,7 @@
   {% assign tag_words = site_tags | split:',' | sort %}
   <div class="home-page-footer">
       <div class="home-page-tag">
+          <a>Tags : </a>
         {% for item in (0..site.tags.size) %}{% unless forloop.last %}
         {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
         <a href="{{site.baseurl}}/tags/#{{ this_word | cgi_escape }}" class="tag">{{ this_word }} <span>({{ site.tags[this_word].size }})</span></a>  

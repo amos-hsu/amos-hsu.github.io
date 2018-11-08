@@ -1,0 +1,46 @@
+---
+layout: main
+title: Blog Archive
+permalink: /archive/
+---
+<div class="home-page-header">
+        <div class="home-page-nav">
+          <a href="{{site.baseurl}}/" class="tag">Home</a>
+          <a href="{{site.baseurl}}/archive/" class="tag">Archive</a>  
+          <a href="{{site.baseurl}}/tags/" class="tag">Tags</a>
+          <a href="{{site.baseurl}}/about/" class="tag">About</a>  
+        </div>
+</div>
+<section class="blog-tags">
+    <!-- <h1>Blog Archive</h1> -->
+    <br>
+    <div class="well article">
+        {%for post in site.posts %}
+            {% unless post.next %}
+                <h2>{{ post.date | date: '%Y' }}</h2>
+                <ul>
+            {% else %}
+                {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+                {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
+                {% if year != nyear %}
+                    </ul>
+                    <h2>{{ post.date | date: '%Y' }}</h2>
+                    <ul>
+                {% endif %}
+            {% endunless %}
+            <div class="tag-list">
+                <span><a href="{{ site.baseurl}}{{ post.url }}">{{ post.title }}</a><span>
+                <small><span class="post-date">
+                    {% assign date_format = site.date_format.archive %}
+                    {{ post.date | date_to_string }} </span></small>
+                
+            </div>
+        {% endfor %}
+        </ul>
+    </div>
+</section>
+<!-- <div class="tag-page-footer">
+    <div class="tag-page-tohome">
+        <a href="{{site.baseurl}}/" class="tag">To Home</a> 
+    </div>
+</div> -->
