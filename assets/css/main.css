@@ -1222,6 +1222,42 @@ a.newer-posts:hover {
   height: 50%;
 }
 
+.home-page-header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  padding-bottom: 0px;
+  margin: 15px 0;
+  padding: 1rem;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+  /* width: 40%; */
+  /*border-bottom: 1px solid #a0a0a0;*/
+}
+.home-page-header .home-page-nav a{
+    /* display: table-footer-group; */
+    text-decoration: none;
+    font-size: 12px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    color: #263959;
+    text-transform: uppercase;
+    /*border: 1px solid #263959;*/
+}
+.home-page-header .home-page-nav a:hover {
+  text-decoration: underline;
+}
+
 .home-page-footer {
   display: -webkit-box;
   display: -webkit-flex;

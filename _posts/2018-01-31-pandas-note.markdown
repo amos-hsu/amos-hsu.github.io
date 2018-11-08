@@ -3,7 +3,7 @@ layout: post
 title: Pandas 主要功能
 date: 2018-01-31 14:14:20 +0300
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
-img: software.jpg # Add image post (optional)
+img: pandas.jpg # Add image post (optional)
 tags: [pandas, python]
 ---
 # pandas主要功能
