@@ -1,4 +1,4 @@
-# Amos Hsu`s Blog
+# AmosX`s Blog
 
 ![](https://github.com/amos-hsu.github.io)
 
