@@ -7,9 +7,14 @@ img: pandas.jpg # Add image post (optional)
 tags: [Pandas, Python]
 ---
 # Pandas 主要功能
+{:.no_toc}
+
 
 这是我使用 Jupyter notebook 写的笔记。
 原地址：[pandas主要功能](http://nbviewer.jupyter.org/github/amos-hsu/Data-Analysis/blob/master/tools/pandas_notes.ipynb)
+
+* 目录
+{:toc}
 
 <html lang="en">
 
@@ -28,7 +33,7 @@ tags: [Pandas, Python]
   <!--NREND-->
 
   <!-- Le styles -->
-  <link href="/static/build/styles.css?v=f2b0b1b8f36a035146061040aa080202" rel="stylesheet">
+  <!-- <link href="/static/build/styles.css?v=f2b0b1b8f36a035146061040aa080202" rel="stylesheet"> -->
 
   <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
@@ -36,7 +41,7 @@ tags: [Pandas, Python]
   <![endif]-->
 
   <!-- Le fav and touch icons -->
-  <link rel="shortcut icon" href="/static/ico/ipynb_icon_16x16.png">
+  <!-- <link rel="shortcut icon" href="/static/ico/ipynb_icon_16x16.png">
   <link rel="apple-touch-icon-precomposed" sizes="144x144"
         href="/static/ico/apple-touch-icon-144-precomposed.png?v=5a3c9ede93e2a8b8ea9e3f8f3da1a905">
   <link rel="apple-touch-icon-precomposed" sizes="114x114"
@@ -44,7 +49,7 @@ tags: [Pandas, Python]
   <link rel="apple-touch-icon-precomposed" sizes="72x72"
         href="/static/ico/apple-touch-icon-72-precomposed.png?v=540b5eb0f3cfd25f1439d1c9bd30e15f">
   <link rel="apple-touch-icon-precomposed"
-        href="/static/ico/apple-touch-icon-57-precomposed.png?v=225f0590e187e1458625654f10a28f56">
+        href="/static/ico/apple-touch-icon-57-precomposed.png?v=225f0590e187e1458625654f10a28f56"> -->
   
 
   <meta name="twitter:card" content="summary">
@@ -56,7 +61,7 @@ tags: [Pandas, Python]
   <meta name="twitter:image:src" content="http://ipython.org/ipython-doc/dev/_images/ipynb_icon_128x128.png">
 
   
-    <link href="/static/build/notebook.css?v=81e0139371f853f9af20339dc0bcfaa6" rel="stylesheet">
+  <link href="../assets/css/notebook.css?v=81e0139371f853f9af20339dc0bcfaa6" rel="stylesheet">
  
 </head>
 
@@ -64,9 +69,9 @@ tags: [Pandas, Python]
 
   <!-- These are loaded at the top of the body so they are available to
        notebook cells when they are loaded below. -->
-  <script src="/static/components/jquery/dist/jquery.min.js?v=a09e13ee94d51c524b7e2a728c7d4039"></script>
+  <!-- <script src="/static/components/jquery/dist/jquery.min.js?v=a09e13ee94d51c524b7e2a728c7d4039"></script>
   <script src="/static/components/requirejs/require.js?v=6da8be361b9ee26c5e721e76c6d4afce"></script>
-  <script src="/static/components/moment/min/moment.min.js?v=89f87298ad94aa1e6b92f42eb66da043"></script>
+  <script src="/static/components/moment/min/moment.min.js?v=89f87298ad94aa1e6b92f42eb66da043"></script> -->
 
 
   <div class="container container-main">

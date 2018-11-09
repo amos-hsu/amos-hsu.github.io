@@ -7,10 +7,11 @@ img: java.jpg # Add image post (optional)
 tags: [Java]
 ---
 # Java 基础
+{:.no_toc}
+* 目录
+{:toc}
 
-数据类型
-
-包装类型
+## 数据类型
 
 八个基本类型：
 ```Java
@@ -23,6 +24,8 @@ float 32/4byte
 long 64/8byte
 double 64/8byte
 ```
+
+## 包装类型
 
 基本类型都有对应的包装类型，使用自动装箱和拆箱
 
