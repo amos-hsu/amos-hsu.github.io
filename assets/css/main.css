@@ -1186,6 +1186,8 @@ a.newer-posts:hover {
 
 /* - - - - - - - - - - Post Page Styles - - - - - - - - - - */
 .wrap-content {
+  max-width: 900px;
+  margin: 10px 0;
   padding: 20px;
 }
 
