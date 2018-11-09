@@ -5,6 +5,7 @@ date: 2018-01-31 14:14:20 +0300
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
 img: pandas.jpg # Add image post (optional)
 tags: [Pandas, Python]
+categories: [Data Analysis]
 ---
 # Pandas 主要功能
 {:.no_toc}

@@ -1,0 +1,39 @@
+---
+layout: main
+title: Blog Categories
+permalink: /categories/
+---
+<div class="home-page-header">
+        <div class="home-page-nav">
+          <i class="fa fa-home"></i><a href="{{ "/" | prepend: site.github.url }}" class="tag">Home</a>
+          <i class="fa fa-archive"></i><a href="{{ "/archives/" | prepend: site.github.url }}" class="tag">Archives</a>
+          <i class="fa fa-th-list"></i><a href="{{ "/categories/" | prepend: site.github.url }}" class="tag">Categories</a>  
+          <i class="fa fa-tags"></i><a href="{{ "/tags/" | prepend: site.github.url }}" class="tag">Tags</a>
+          <i class="fa fa-heart"></i><a href="{{ "/about/" | prepend: site.github.url }}" class="tag">About</a>  
+        </div>
+      </div>
+<section class="blog-tags">
+        <br>
+    <div class="well article">
+    {% assign sortedcategories = site.categories | sort %}
+    {% for category in sortedcategories %}
+        <h2>{{ category[0] | capitalize }}</h2>
+        <ul>
+            {% assign pages_list = category[1] %}
+            {% for node in pages_list %}
+                {% if node.title != null %}
+                {% if group == null or group == node.group %}
+                    <div class="tag-list">
+                        <span><a href="{{ site.baseurl}}{{ node.url }}">{{ node.title }}</a><span>
+                                <small><span class="post-date">
+                                        {% assign date_format = site.date_format.categories %}
+                                        {{ node.date | date: date_to_string }} </span></small>
+                {% endif %}
+                {% endif %}
+                    </div>
+            {% endfor %}
+            {% assign pages_list = nil %}
+        </ul>
+    {% endfor %}
+    </div>
+</section>

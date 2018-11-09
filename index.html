@@ -1,27 +1,115 @@
 ---
 layout: main
 ---
+
 <div class="home-page-header">
   <div class="home-page-nav">
-    <a href="{{ "{{site.baseurl}}/" | prepend: site.github.url }}" class="tag">Home</a>
-    <a href="{{ "{{site.baseurl}}/archive/" | prepend: site.github.url }}" class="tag">Archive</a>  
-    <a href="{{ "{{site.baseurl}}/tags/" | prepend: site.github.url }}" class="tag">Tags</a>
-    <a href="{{ "{{site.baseurl}}/about/" | prepend: site.github.url }}" class="tag">About</a>  
+    <i class="fa fa-home"></i><a href="{{ "/" | prepend: site.github.url }}" class="tag">Home</a>
+    <i class="fa fa-archive"></i><a href="{{ "/archives/" | prepend: site.github.url }}" class="tag">Archives</a>
+    <i class="fa fa-th-list"></i><a href="{{ "/categories/" | prepend: site.github.url }}" class="tag">Categories</a>  
+    <i class="fa fa-tags"></i><a href="{{ "/tags/" | prepend: site.github.url }}" class="tag">Tags</a>
+    <i class="fa fa-heart"></i><a href="{{ "/about/" | prepend: site.github.url }}" class="tag">About</a>  
   </div>
 </div>
-{% for post in paginator.posts %}
-<article class="post">
-  {% if post.img %}
-    <a class="post-thumbnail" style="background-image: url({{"/assets/img/" | prepend: site.baseurl | append : post.img}})" href="{{post.url | prepend: site.baseurl}}"></a>
-  {% else %}
-  {% endif %}
-  <div class="post-content">
-    <h2 class="post-title"><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h2>
-    <p>{{ post.content | strip_html | truncatewords: 15 }}</p>
-    <span class="post-date">{{post.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;—&nbsp;</span>
-    <span class="post-words">{% capture words %}{{ post.content | number_of_words }}{% endcapture %}{% unless words contains "-" %}{{ words | plus: 250 | divided_by: 250 | append: " minute read" }}{% endunless %}</span>
-  </div>
-</article>
-{% endfor %}
+<div class="page clearfix" index>
+  <div class="left">
+    {% for post in paginator.posts %}
+    <article class="post">
+      {% if post.img %}
+        <a class="post-thumbnail" style="background-image: url({{"/assets/img/" | prepend: site.baseurl | append : post.img}})" href="{{post.url | prepend: site.baseurl}}"></a>
+      {% else %}
+      {% endif %}
+      <div class="post-content">
+        <h2 class="post-title"><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h2>
+        <p>{{ post.content | strip_html | truncatewords: 15 }}</p>
+        <span class="post-date">{{post.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;—&nbsp;</span>
+        <span class="post-words">{% capture words %}{{ post.content | number_of_words }}{% endcapture %}{% unless words contains "-" %}{{ words | plus: 250 | divided_by: 250 | append: " minute read" }}{% endunless %}</span>
+      </div>
+    </article>
+    {% endfor %}
 
-{% include pagination.html %}
+    {% include pagination.html %}
+  </div>
+  <div class="right">
+    <br>
+      <div class="wrap">
+          <div class="side">
+              <div>
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  Recent Posts
+              </div>
+              <ul class="content-ul" recent>
+                  {% for post in site.posts offset: 0 limit: 10  %}
+                      <li><span><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></span></li>
+                  {% endfor %}
+              </ul>
+          </div>
+
+          <!-- Content -->
+          <div class="side ">
+              <div>
+                  <i class="fa fa-th-list"></i>
+                  Categories
+              </div>
+              <ul class="content-ul" cate>
+                  {% for category in site.categories %}
+                  <li>
+                      <!-- <span><a href="{{ site.github.url }}/categories/#{{ category | first }}" class="categories-list-item" cate="{{ category | first }}">   -->
+                      <span><a href="{{ site.github.url }}/categories/" class="categories-list-item" cate="{{ category | first }}">
+                          <span class="name">
+                              {{ category | first }}
+                          </span>
+                          <span class="badge">{{ category | last | size }}</span>
+                      </a></span>
+                  </li>
+                  {% endfor %}
+              </ul>
+          </div>
+          <br>
+          <!-- 其他div框放到这里 -->
+          <div class="side">
+              <div>
+                  <i class="fa fa-tags"></i>
+                  Tags
+              </div>
+              <div class="tags-cloud">
+                  {% assign first = site.tags.first %}
+                  {% assign max = first[1].size %}
+                  {% assign min = max %}
+                  {% for tag in site.tags offset:1 %}
+                    {% if tag[1].size > max %}
+                      {% assign max = tag[1].size %}
+                    {% elsif tag[1].size < min %}
+                      {% assign min = tag[1].size %}
+                    {% endif %}
+                  {% endfor %}
+
+                  {% if max == min %}
+                      {% assign diff = 1 %}
+                  {% else %}
+                      {% assign diff = max | minus: min %}
+                  {% endif %}
+
+                  {% for tag in site.tags %}
+                    {% assign temp = tag[1].size | minus: min | times: 36 | divided_by: diff %}
+                    {% assign base = temp | divided_by: 4 %}
+                    {% assign remain = temp | modulo: 4 %}
+                    {% if remain == 0 %}
+                      {% assign size = base | plus: 9 %}
+                    {% elsif remain == 1 or remain == 2 %}
+                      {% assign size = base | plus: 9 | append: '.5' %}
+                    {% else %}
+                      {% assign size = base | plus: 10 %}
+                    {% endif %}
+                    {% if remain == 0 or remain == 1 %}
+                      {% assign color = 9 | minus: base %}
+                    {% else %}
+                      {% assign color = 8 | minus: base %}
+                    {% endif %}
+                    <span><a href="{{ site.github.url }}/tags/#{{ tag[0] }}" style="font-size: {{ size }}pt; color: #{{ color }}{{ color }}{{ color }};">{{ tag[0] }}</a><span>
+                  {% endfor %}
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

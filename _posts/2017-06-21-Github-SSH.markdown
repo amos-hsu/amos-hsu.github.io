@@ -5,6 +5,7 @@ date: 2017-06-21 19:14:20 +0300
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
 img: github.jpg # Add image post (optional)
 tags: [Github, Git]
+categories: Git
 ---
 
 
