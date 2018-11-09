@@ -5,8 +5,35 @@ permalink: /tags/
 ---
 {% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
 {% assign tag_words = site_tags | split:',' | sort %}
-
-<aside class="sidebar">
+<div class="header">
+    <!-- <div class="wrapper"> -->
+        <!-- <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button> -->
+        <!-- <nav id="headerNav">
+            <ul>
+              {% if page.url == '/' %}
+              <a class="active" href="{{site.baseurl}}/">
+                  {% else %}
+              <a href="{{site.baseurl}}/">
+              {% endif %}
+                  <i class="fa fa-home"></i>Home
+              </a>
+          
+              <a href="{{ "/archives/" | prepend: site.github.url }}"><i class="fa fa-archive"></i>Archives</a>
+              <a href="{{ "/categories/" | prepend: site.github.url }}" ><i class="fa fa-th-list"></i>Categories</a>  
+              <a href="{{ "/tags/" | prepend: site.github.url }}" ><i class="fa fa-tags"></i>Tags</a>
+              <a href="{{ "/about/" | prepend: site.github.url }}" ><i class="fa fa-heart"></i>About</a>
+            </ul>
+        </nav>
+    </div> -->
+  <div class="page-nav">
+    <i class="fa fa-home"></i><a href="{{ "/" | prepend: site.github.url }}" class="tag">Home</a>
+    <i class="fa fa-archive"></i><a href="{{ "/archives/" | prepend: site.github.url }}" class="tag">Archives</a>
+    <i class="fa fa-th-list"></i><a href="{{ "/categories/" | prepend: site.github.url }}" class="tag">Categories</a>  
+    <i class="fa fa-tags"></i><a href="{{ "/tags/" | prepend: site.github.url }}" class="tag">Tags</a>
+    <i class="fa fa-heart"></i><a href="{{ "/about/" | prepend: site.github.url }}" class="tag">About</a>  
+  </div>
+</div>
+<div class="sidebar">
   <header>
     <div class="about">
       <div class="cover-author-image">
@@ -62,7 +89,7 @@ permalink: /tags/
       <p>{{site.time | date: '%Y'}} &copy; {{site.author}}</p>
     </div>
   </footer> <!-- End Footer -->
-</aside> <!-- End Sidebar -->
+</div> <!-- End Sidebar -->
 <div class="content-box clearfix">
   {{ content }}
 </div>
