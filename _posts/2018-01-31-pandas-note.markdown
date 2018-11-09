@@ -61,7 +61,7 @@ tags: [Pandas, Python]
   <meta name="twitter:image:src" content="http://ipython.org/ipython-doc/dev/_images/ipynb_icon_128x128.png">
 
   
-  <link href="../assets/css/notebook.css?v=81e0139371f853f9af20339dc0bcfaa6" rel="stylesheet">
+  <link href="{{ "/assets/css/notebook.css?v=81e0139371f853f9af20339dc0bcfaa6" | prepend: site.github.url }}" rel="stylesheet">
  
 </head>
 
