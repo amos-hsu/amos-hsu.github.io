@@ -7,10 +7,7 @@ img: pandas.jpg # Add image post (optional)
 tags: [Pandas, Python]
 categories: [Data Analysis]
 ---
-# Pandas 主要功能
-{:.no_toc}
-
-
+<!-- {:.no_toc} -->
 这是我使用 Jupyter notebook 写的笔记。
 原地址：[pandas主要功能](http://nbviewer.jupyter.org/github/amos-hsu/Data-Analysis/blob/master/tools/pandas_notes.ipynb)
 
@@ -27,32 +24,6 @@ categories: [Data Analysis]
   <meta name="author" content="">
   
   <meta name="robots" content="noindex,nofollow">
-  
-
-  <!--NEW RELIC Start Perf Measurement-->
-  
-  <!--NREND-->
-
-  <!-- Le styles -->
-  <!-- <link href="/static/build/styles.css?v=f2b0b1b8f36a035146061040aa080202" rel="stylesheet"> -->
-
-  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-  <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-
-  <!-- Le fav and touch icons -->
-  <!-- <link rel="shortcut icon" href="/static/ico/ipynb_icon_16x16.png">
-  <link rel="apple-touch-icon-precomposed" sizes="144x144"
-        href="/static/ico/apple-touch-icon-144-precomposed.png?v=5a3c9ede93e2a8b8ea9e3f8f3da1a905">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114"
-        href="/static/ico/apple-touch-icon-114-precomposed.png?v=45d86fc8f24dc00638035e1dd7a6d898">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72"
-        href="/static/ico/apple-touch-icon-72-precomposed.png?v=540b5eb0f3cfd25f1439d1c9bd30e15f">
-  <link rel="apple-touch-icon-precomposed"
-        href="/static/ico/apple-touch-icon-57-precomposed.png?v=225f0590e187e1458625654f10a28f56"> -->
-  
-
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Notebook on nbviewer">
   <meta name="twitter:description" content="Check out this Jupyter notebook!">
