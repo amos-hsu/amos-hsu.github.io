@@ -2,47 +2,141 @@
 layout: main
 permalink: /blog/
 ---
-<article class="article-page">
-  <div class="page-content">
-    {% if page.img %}
-    <div class="page-cover-image" height=“200”>
-      <img class="page-image" src={{ "/assets/img/" | prepend: site.baseurl | prepend: site.github.url | append : page.img}} alt="{{page.title}}">
-    </div> 
-    {% else %}
-    {% endif %} <!-- End Page Cover Image -->
-    <div class="wrap-content">
-      <header class="header-page">
-        <h1 class="page-title">{{page.title}}</h1>
-        <div class="page-date"><span>{{page.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-        <div class="home-page-header">
-          <div class="home-page-nav">
-            <!-- <b href="{{site.baseurl}}/" class="tag">To Home！</b>  -->
+<div class="page clearfix" post>
+  <div class="left">
+    <h1 class="page-title">{{page.title}}</h1>
+    <div class="label">
+
+        <div class="label-card">
+            <i class="fa fa-calendar"></i>{{ page.date | date: "%F" }}
+        </div>
+
+        <div class="label-card">
+            {% if page.author %}<i class="fa fa-user"></i>{{ page.author }}
+            {% endif %}
+        </div>
+        <div class="label-card">
+            {% if page.meta %}<i class="fa fa-key"></i>{{ page.meta }}  {% endif %}
+        </div>
+
+        <div class="label-card">
+            <i class="fa fa-th-list"></i>
+            {% for category in page.categories %}
+                <a href="{{ site.github.url }}/categories/#{{tag}}" class="tag"> {{ category }}</a>
+            {% endfor %}
+        </div>
+
+        <div class="label-card">
             <i class="fa fa-tags"></i>
             {% for tag in page.tags %}
-              <a href="{{ site.github.url }}/tags/#{{tag}}" class="tag">&#35; {{ tag }}</a>
+                <span><a href="{{ site.github.url }}/tags/#{{tag}}" class="tag"> {{ tag }}</a></span>
             {% endfor %}
+        </div>
+    </div>
+    <article class="article-page">
+      <div class="page-content">
+        <!-- {% if page.img %}
+        <div class="page-cover-image" height=“200”>
+          <img class="page-image" src={{ "/assets/img/" | prepend: site.baseurl | prepend: site.github.url | append : page.img}} alt="{{page.title}}">
+        </div> 
+        {% else %}
+        {% endif %}  -->
+        <!-- End Page Cover Image -->
+        <div class="wrap-content">
+          <!-- <header class="header-page">
+            <h1 class="page-title">{{page.title}}</h1>
+            <div class="page-date"><span>{{page.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+            <div class="home-page-header">
+              <div class="home-page-nav">
+                <i class="fa fa-tags"></i>
+                {% for tag in page.tags %}
+                  <a href="{{ site.github.url }}/tags/#{{tag}}" class="tag">{{ tag }}</a>
+                {% endfor %}
+              </div>
+            </div>  
+          </header> -->
+          
+          {{page.content | markdownify}}
+          
+          <!-- <div class="page-footer">
+            <div class="page-share">
+              <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+              <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+            </div>
+            <div class="page-tag">
+              <i class="fa fa-tags"></i>
+              {% for tag in page.tags %}
+                <a href="{{ site.github.url }}/tags/#{{tag}}" class="tag">&#35; {{ tag }}</a>
+              {% endfor %}
+            </div>
+            <div class="tohome">
+                <i class="fa fa-home"></i>
+              <a href="{{site.github.url}}/" >To Home </a>
+            </div>
           </div>
-        </div>  
-      </header>
-      
-      {{page.content | markdownify}}
-      <div class="page-footer">
-         <!-- <div class="page-share">
-          <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
-          <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
-         </div> -->
-        <div class="page-tag">
-          <i class="fa fa-tags"></i>
-          {% for tag in page.tags %}
-            <a href="{{ site.github.url }}/tags/#{{tag}}" class="tag">&#35; {{ tag }}</a>
-          {% endfor %}
+          {% include disqus.html %}
+        </div> 
+        <!-- End Wrap Content -->
+      </div> <!-- End Page Content -->
+    </article> <!-- End Article Page -->
+    <div class="post-recent">
+            {% assign hasSimilar = '' %}
+                {% for post in site.related_posts %}
+                {% assign postHasSimilar = false %}
+                {% for tag in post.tags %}
+                    {% for thisTag in page.tags %}
+                        {% if postHasSimilar == false and hasSimilar.size < 6 and post != page and tag == thisTag %}
+                            {% if hasSimilar.size == 0 %}
+                            <p id="similar_posts"><strong>相关文章</strong></p>
+                            <ul>
+                            {% endif %}
+                            <li class="relatedPost">
+                                <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}
+                                {% if post.series %}
+                                    (Series: {{ post.series }})
+                                {% endif %}
+                                </a>
+                            </li>
+                            {% capture hasSimilar %}{{ hasSimilar }}*{% endcapture %}
+                            {% assign postHasSimilar = true %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            {% endfor %}
+            {% if hasSimilar.size > 0 %}
+              </ul>
+            {% endif %}
         </div>
-        <div class="tohome">
-            <i class="fa fa-home"></i>
-          <a href="{{site.github.url}}/" >To Home </a>
+    <div class="post-recent">
+        <br>
+        <div class="pre">
+            {% if page.previous %}
+            <p><strong>上一篇</strong> <span><a href="{{ page.previous.url | prepend: site.baseurl }}" class="tag">{{ page.previous.title }}</a></span></p>
+            {% endif %}
         </div>
-      </div>
-      {% include disqus.html %}
-    </div> <!-- End Wrap Content -->
-  </div> <!-- End Page Content -->
-</article> <!-- End Article Page -->
+        <div class="nex">
+            {% if page.next %}
+            <p><strong>下一篇</strong> <a href="{{ page.next.url | prepend: site.baseurl }}" class="tag">{{ page.next.title }}</a></p>
+            {% endif %}
+        </div>
+    </div>
+    
+  </div>
+  <div class="right">
+    <div class="wrap">
+        <!-- Content -->
+        <div class="side content">
+            <div>
+                Content
+            </div>
+            <ul id="content-side" class="content-ul">
+                {% if hasSimilar.size > 0 %}
+                <li><span><a href="#similar_posts">相关文章</a></span></li>
+                {% endif %}
+            </ul>
+        </div>
+        <!-- 其他div框放到这里 -->
+        <!-- <div class="side">bbbb</div> -->
+    </div>
+  </div>
+</div>

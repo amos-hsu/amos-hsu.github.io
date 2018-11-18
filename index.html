@@ -46,7 +46,7 @@ layout: main
                   {% for category in site.categories %}
                   <li>
                       <!-- <span><a href="{{ site.github.url }}/categories/#{{ category | first }}" class="categories-list-item" cate="{{ category | first }}">   -->
-                      <span><a href="{{ site.github.url }}/categories/" class="categories-list-item" cate="{{ category | first }}">
+                      <span><a href="{{ site.github.url }}/categories/#{{ category | first }}"  cate="{{ category | first }}">
                           <span class="name">
                               {{ category | first }}
                           </span>

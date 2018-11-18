@@ -36,7 +36,7 @@ html {
     padding-bottom: 1rem;
     padding-left: 1rem;
 }
-.header .page-nav a{
+.header .page-nav a {
     text-decoration: none;
     font-size: 15px;
     padding-left: 5px;
@@ -47,8 +47,7 @@ html {
 .header .page-nav a:hover {
   text-decoration: underline;
 }
- 
-@media screen and (max-width: 770px){
+@media screen and (max-width: 770px) {
   .header {
     display: -webkit-box;
     display: -webkit-flex;
@@ -70,7 +69,29 @@ html {
       padding-bottom: 1rem;
       padding-left: 1rem;
   }
-} 
+  .header .page-nav i{
+    text-decoration: none;
+    font-size: 10px;
+  }
+  .header .page-nav a{
+    text-decoration: none;
+    padding-right: 10px;
+    font-size: 10px;
+    color: #263959;
+  }
+  .header .page-nav a:hover {
+    text-decoration: underline;
+  }
+}  
+@media screen and (max-width: 380px) {
+  .header .page-nav a{
+    text-decoration: none;
+    padding-right: 3px;
+    font-size: 8px;
+    color: #263959;
+  }
+}
+
 .header .wrapper {
     /* width: 1140px; */
     /* margin: 0; */
@@ -1300,7 +1321,7 @@ footer .copyright {
 }
 
 .post .post-thumbnail {
-  width: 30%;
+  width: 35%;
   max-width: 100%;
   min-height: 11rem;
   -webkit-background-size: cover;
@@ -1310,17 +1331,17 @@ footer .copyright {
 
 .post .post-content {
   padding: 1rem;
-  width: 70%;
+  width: 65%;
 }
 
 .post .post-content .post-date,
 .post .post-content .post-words {
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .post .post-content .post-title {
   margin: 0 0 10px;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 400;
 }
 
@@ -1703,9 +1724,9 @@ a.newer-posts:hover {
 
 /* - - - - - - - - - - Media Styles - - - - - - - - - - */
 /* Medium Devices, Desktops */
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1150px) {
   .post {
-    width: 48%;
+    width: 100%;
     max-width: 100%;
     margin: 0 0.9% 1.5%;
     -webkit-box-orient: vertical;
@@ -1858,7 +1879,42 @@ a.newer-posts:hover {
   background-color: #f8f8fd;
   /* box-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 0 30px rgba(10,10,0,0.1) inset; */
 }
-@media screen and (max-width: 1150x){
+.page .left a:not([title]) {
+  text-decoration: none;
+  text-decoration-line: none;
+  text-decoration-style: initial;
+  text-decoration-color: initial;
+  word-break: break-all;
+}
+
+.page[post] a {
+  text-decoration: none;
+  text-decoration-line: none;
+  text-decoration-style: initial;
+  text-decoration-color: initial;
+  color: #4d6dad;
+  transition: 0.5s ease;
+}
+.page .left .label {
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+.page .left .label .label-card {
+  float: left;
+  margin-right: 15px;
+}
+.page .left .label .label-card i {
+  padding-right: 0;
+  margin-right: 3px;
+  color: #263959;
+}
+.page .left .label .label-card a {
+  text-decoration: none;
+  text-decoration-line: none;
+  text-decoration-style: initial;
+  text-decoration-color: initial;
+}
+@media screen and (max-width: 1150px){
   .page .left {
     width: 100%;
     float: left;
@@ -1866,10 +1922,8 @@ a.newer-posts:hover {
     line-height: 1.6;
     font-size: 16px;
     background-color: #f8f8fd;
-    /* box-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 0 30px rgba(10,10,0,0.1) inset; */
   }
 }
-
 .page .right {
   float: left;
   width: 25%;
@@ -1909,12 +1963,11 @@ a.newer-posts:hover {
   -ms-hyphens: auto;
   hyphens: auto;
 }
-/* .page .right .side>div {
+.page .right .side>div {
   padding: 12px 15px;
-  border-bottom: 1px solid #c0c0c0;
   font-size: 16px;
   font-weight: bold;
-} */
+}
 .page[index] .right .wrap .side .content-ul[recent] {
   padding-bottom: 16px;
 }
@@ -1933,10 +1986,33 @@ a.newer-posts:hover {
   text-decoration: underline;
   opacity: .8;
 }
+.page[index] .right .wrap .side {
+  margin-bottom: 20px;
+  padding-bottom: 0;
+}  
+.page[index] .right .wrap .side .content-ul[recent] {
+  padding-bottom: 16px;
+}
 .page[index] .right .wrap .side .content-ul[recent] li {
   color: #aaa;
   font-size: 14px;
 }
+.page[index] .right .wrap .side .content-ul[cate] li {
+  color: #aaa;
+  font-size: 14px;
+}
+.page[index] .right .wrap .side .content-ul[cate] li a {
+  display: block;
+  width: 100%;
+  padding: 2px 0;
+  border-bottom: 1px solid #eee;
+}
+.page[index] .right .wrap .side .content-ul[cate] li a:hover {
+  background-color: #dbdfee;
+}  
+.page[index] .right .wrap .side .content-ul[cate] li a .name {
+  padding-left: 0px;
+}  
 .page[index] .right .wrap .side .content-ul[cate] li a .badge {
   display: block;
   float: right;
@@ -1944,7 +2020,7 @@ a.newer-posts:hover {
   margin-right: 15px;
   margin-top: 3px;
   padding: 0 10px;
-  font-size: 12px;
+  font-size: 14px;
   color: #fff;
   background-color: #bbb;
   border-radius: 50%;
@@ -1966,3 +2042,51 @@ a.newer-posts:hover {
   opacity: .8;
 }
 
+.back-to-top {
+  position: fixed;
+  left: 50%;
+  margin-left: 580px;
+  bottom: 37px;
+  background-color: #f8f8fd;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.4s ease;
+  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.3), 0 0 30px rgba(10, 10, 0, 0.1) inset;
+}
+.back-to-top a {
+  display: block;
+  background-color: #eee;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  font-size: 20px;
+  color: #b4b4b4;
+}
+.back-to-top-show{
+  visibility: visible;
+  opacity: 0.7;
+}
+.back-to-top-show:hover{
+  opacity: 1
+}
+@media screen and (max-width:1200px) and (min-width: 770px) {
+  .back-to-top {
+      left: 50%;
+      margin-left: 45.5%;
+  }
+}
+@media screen and (max-width: 770px) {
+  .back-to-top {
+      right:2.5%;
+      left: auto;
+      margin-left: 0px;
+  }
+  .back-to-top a {
+    width: 33px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    font-size: 18px;
+}
+}
