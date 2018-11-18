@@ -122,6 +122,7 @@ permalink: /blog/
     </div>
     
   </div>
+  <button class="anchor"><i class="fa fa-anchor"></i></button>
   <div class="right">
     <div class="wrap">
         <!-- Content -->
@@ -140,3 +141,15 @@ permalink: /blog/
     </div>
   </div>
 </div>
+<script>
+    /**
+     * target _blank
+     */
+    (function() {
+        var aTags = document.querySelectorAll('article a:not([id])')
+        for (var i = 0; i < aTags.length; i++) {
+            aTags[i].setAttribute('target', '_blank')
+        }
+    }());
+</script>
+<script src="{{ "/assets/js/pageContent.js " | prepend: site.baseurl }}" charset="utf-8"></script>

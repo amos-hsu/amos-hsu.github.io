@@ -1870,6 +1870,9 @@ a.newer-posts:hover {
 .clearfix {
   *zoom: 1;
 }
+.page .anchor {
+  display: none;
+}
 .page .left {
   width: 75%;
   float: left;
