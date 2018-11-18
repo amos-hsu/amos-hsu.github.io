@@ -5,7 +5,8 @@ permalink: /tags/
 ---
 {% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
 {% assign tag_words = site_tags | split:',' | sort %}
-<div class="header">
+<div class="content-box clearfix">
+  <div class="header">
     <!-- <div class="wrapper"> -->
         <!-- <button id="headerMenu" class="menu"><i class="fa fa-bars"></i></button> -->
         <!-- <nav id="headerNav">
@@ -90,6 +91,5 @@ permalink: /tags/
     </div>
   </footer> <!-- End Footer -->
 </div> <!-- End Sidebar -->
-<div class="content-box clearfix">
   {{ content }}
 </div>
