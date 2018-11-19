@@ -28,8 +28,8 @@ html {
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
   padding-bottom: 15px;
-  margin-left: 20px;
-  margin-top: 20px;
+  margin-left: 35px;
+  margin-top: 10px;
   padding: 1rem;
     padding-top: 1rem;
     padding-right: 1rem;
@@ -1858,7 +1858,7 @@ a.newer-posts:hover {
 .page {
   width: 2040px;
   /* box-sizing: border-box; */
-  margin: 0 auto;
+  margin: 0 auto auto 15px;
 }
 @media screen and (max-width: 1150px){
   .page {
