@@ -2,7 +2,7 @@
 layout: post
 title:  "Jekyll 搭建静态博客"
 author: 沉一叶
-date:   2017-01-01 22:14:54
+date:   2017-01-01 00:00:00
 categories: Jekyll
 img: i-rest.jpg # Add image post (optional)
 tags: [Jekyll, Github]

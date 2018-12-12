@@ -28,12 +28,12 @@ html {
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
   padding-bottom: 15px;
-  margin-left: 35px;
+  margin-left: 30px;
   margin-top: 10px;
   padding: 1rem;
     padding-top: 1rem;
     padding-right: 1rem;
-    padding-bottom: 1rem;
+    padding-bottom: 0rem;
     padding-left: 1rem;
 }
 .header .page-nav a {
@@ -951,6 +951,15 @@ img {
   vertical-align: middle;
   display: inline-block;
 }
+.about-image {
+  width: 45%;
+  height: 35%;
+  vertical-align: middle;
+  display: inline-block;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: 50% 50%;
+}
 
 blockquote {
   border-left: 5px solid #000;
@@ -1667,6 +1676,8 @@ a.newer-posts:hover {
 /* - - - - - - - - - - Tag Styles - - - - - - - - - - */
 .blog-tags {
   width: 100%;
+  margin-left: 25px;
+  margin-top: 30px;
   background-color: #ffffff;
   padding: 0 20px 20px;
 }
@@ -2091,5 +2102,5 @@ a.newer-posts:hover {
     line-height: 33px;
     text-align: center;
     font-size: 18px;
-}
+  }
 }
