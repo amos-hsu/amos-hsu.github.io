@@ -4,7 +4,7 @@ title: 爬虫实践 1 - 爬虫预备知识
 date: 2018-11-30 21:14:20 +0300
 author: 沉一叶
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
-img: Software.jpg # Add image post (optional)
+img: software.jpg # Add image post (optional)
 img1: scrapy.png
 tags: [Scrapy, Python]
 categories: Scrapy
