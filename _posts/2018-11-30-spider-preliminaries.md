@@ -1,17 +1,14 @@
 ---
 layout: post
-title: Python 爬虫实践 1 - 爬虫预备知识
+title: 爬虫实践 1 - 爬虫预备知识
 date: 2018-11-30 21:14:20 +0300
 author: 沉一叶
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
 img: Software.jpg # Add image post (optional)
+img1: scrapy.png
 tags: [Scrapy, Python]
 categories: Scrapy
 ---
-爬虫是能够自动抓取网络信息的一种程序，是从互联网获取对于我们有价值的信息的第一步。
-为了学会有效地获取网络信息，接下来计划使用一个月的时间，进行爬虫的项目实践。
-
-第一部分，是开展爬虫工作的一些预备知识。
 
 目录：
 
@@ -21,6 +18,10 @@ categories: Scrapy
 <!-- GFM-TOC -->
 <!-- [一 爬虫能做什么](#爬虫能做什么) -->
 <!-- GFM-TOC -->
+
+爬虫是能够自动抓取网络信息的一种程序，是从互联网获取对于我们有价值的信息的第一步。
+为了学会有效地获取网络信息，接下来计划使用一个月的时间，进行爬虫的项目实践。
+
 ## 爬虫能做什么
 1. 搜索引擎---百度、Google、垂直领域搜索引擎
 2. 推荐引擎---今日头条
@@ -28,19 +29,25 @@ categories: Scrapy
 4. 数据分析（如金融数据分析等）、舆情分析
 
 ## 技术选型
-这里使用的是 Python 爬虫技术。
 
-scrapy VS request+beautifulsoup
+当然，人生苦短，我用 Python啦。相关的 Pyhton 库或者框架也很多。
+
+对于 scrapy VS request + beautifulsoup
 - request 和 beautifulsoup 都是库，而 scrapy 是框架
 - scrapy 中可以加入 requests 和 beautifulsoup
 - scrapy 基于 twisted，性能是最大的优势
 - scrapy 易于扩展，提供了很多内置功能
 - scrapy 内置的 css 和 xpath 的 selector 非常方便，beautifulsoup 最大的缺点就是慢。
 
+这里选择了 Scrapy 框架。
+Scrapy 使用 Twisted 异步网络库来处理网络通信，可以灵活的完成各种需求。
+- 优点：灵活的定制化爬取；文档完善；采用布隆过滤方案进行 URL 去重；可以处理不完整的 HTML等等。
+- 缺点： 不支持分布式部署；原生不支持抓取 JavaScript 的页面；全命令行操作，需要一定学习周期。
+
 ## 网页分类
-1. 静态网页：静态博客，如 Github Pages 等
-2. 动态网页
-3. Webservice（Rest API）：电商网站
+- 静态网页：静态博客，网页内容生成后，不再发生变化，如 Github Pages 等
+- 动态网页：网页内容生成后，还可以随着时间、环境或者数据库操作的结果而发生变化
+- Webservice（Rest API）：电商网站
 
 ## 正则表达式
 为什么要学习正则表达式？正则表达式规定了一种匹配字符串的模式。用于：
@@ -81,7 +88,7 @@ regex_str = ".*(\d{4}[年/-]\d{1,2}([月/-]\d{1,2}|[月/-]\$|\$))"
 
 Python2  默认ASCII编码，Python3 默认Unicode编码。
 
-## 算法
+## 爬取策略算法
 - 网站 URL 的树结构
 ![](https://upload-images.jianshu.io/upload_images/12927609-536979642544111e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 - 深度优先遍历算法
@@ -125,8 +132,145 @@ def level_search(root):
 ```
 
 ## 爬虫去重策略
-1. 将访问过的 URL 保存到数据库中
-2. 将访问过的  URL 保存到 set 中，只需要 O(1) 的代价就可以查询 URL，但是需要占用内存，在数据量大的时候不适用。1 亿 URL：100000000*2byte*50 = 9G
-3. 将URL进行MD5等方法哈希后保存到set中，MD5编码占用128bit，可以将set长度压缩。（Scrapy）
-4. 使用 bitmap 方法，将访问过的 URL 通过哈希函数映射到某一位，但是哈希冲突比较严重。
-5. 使用 bloomfilter 方法对 bitmap 进行改进，多重哈希函数降低哈希冲突。
+1. 直接存储
+- 将访问过的 URL 保存到数据库中
+- 将访问过的  URL 保存到 set 中，只需要 O(1) 的代价就可以查询 URL，但是需要占用内存，在数据量大的时候不适用。1 亿 URL：100000000*2byte*50 = 9G。
+2. 哈希存储
+- 将URL进行 MD5 等方法哈希后保存到 set 中，MD5 编码占用 128bit，可以将 URL 长度压缩。Scrapy 采用的即这种哈希存储。
+- 使用 bitmap 方法，将访问过的 URL 通过哈希函数映射到某一位，但是仍然会有哈希冲突。
+- 使用布隆过滤器 bloomfilter 方法对 bitmap 进行改进，利用多重哈希函数降低哈希冲突。
+
+
+## 最简单的爬虫框架
+![迷你爬虫框架](https://upload-images.jianshu.io/upload_images/12927609-5d62f46762941a05.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+框架目录结构
+```Bash
+config_load.py    配置文件加载
+crawl_thread.py    爬取线程
+mini_spider.py    主线程
+spider.conf    配置文件
+url_table.py    url队列、url表
+urls.txt    种子url集合
+webpage_parse.py    网页分析
+webpage_save.py    网页存储
+```
+
+配置文件 spider.conf
+```Bash
+[spider]
+url_list_file: ./url.txt;   #种子文件路径
+output_dir: ./output;       #抓取结果存储目录
+max_depth: 1;               #最大抓取深度，种子为0级
+crawl_interval: 1;          #抓取间隔，单位：秒
+crawl_timeout: 1;           #抓取超时
+target_url： .*.html        #需要存储的目标网页 URL pattern
+thread_count: 6;            #抓取线程数
+```
+
+爬取过程
+
+- 创建初始 URL 集合，从初始 URL 开始抓取
+
+- 爬取算法采用BFS算法，不停地将解析出的 URL 放入队列中，直到达到指定深度。
+```Python
+# 向队列填充URLs
+cur_depth = 0
+depth = conf.max_depth
+while cur_depth <= depth:
+    for host in hosts:
+        url_queue.put(host)
+        time.sleep(conf.crawl_interval)
+    cur_depth += 1
+    web_parse.cur_depth = cur_depth
+    url_queue.jion()
+    hosts = copy.deepcopy(u_table.todo_list)
+    u_table.todo_list = []
+```
+
+- 使用 URL 表记录已经遍历过的 URL
+
+- 多个抓取线程：爬虫是 IO 密集任务，多线程可以有效提升效率
+
+- 页面分析
+
+- 分析结果存储
+
+## Scrapy 入门知识
+
+Scrapy 是基于事件驱动网络框架 Twisted 编写的。Twisted 是一个异步阻塞框架。
+
+### Scrapy 框架
+<div align="center"><img src="{{"/assets/img/scrapy.png" | prepend: site.github.url }}"></div>
+
+组件
+
+- Engine：引擎负责控制数据流在系统中各个组件中流动，并在相应动作发生时触发事件
+- Schedule：调度器从引擎接受 Request 并将它们入队，以便之后引擎请求给他们提供给引擎
+- Downloader：下载器负责获取页面数据并提供给引擎，而后提供给Spider
+- Spider：Spider 是用户编写的用于分析 Response 并提取 Item 或提取更多需要下载的 URL 的类。每个 Spider 负责处理特定网站
+- Item Pipline：负责处理被 Spider 提取出来的 Item。典型的功能有清洗、验证、持久化操作
+- Downloader middlewares：下载器中间件是在 Engine 及 Downloader 之间的特定钩子，处理 Downloader 传递给 Engine 的 Response。其提供了一个简便的机制，通过插入自定义代码来扩展 Scrapy 的功能
+- Spider middlewares：Engine 及 Spider 之间的特定钩子，处理 Spider 的输入（Response）和输出（Items 及 Requests）。其提供了一个简便的机制，通过插入自定义代码来实现扩展 Scrapy 的功能
+
+数据流
+<div align="center"><img src="{{"/assets/img/scrapy-flow.jpg" | prepend: site.github.url }}"></div>
+
+### 入门教程
+
+**创建项目**
+```Shell
+$ scrapy startproject tutorial
+```
+
+**项目目录结构**
+```Shell
+tutorial/
+    scrapy.cfg            # 项目的配置文件
+    tutorial/             # 该项目的python模块。之后您将在此加入代码
+        __init__.py
+        items.py          # 项目中的item文件
+        pipelines.py      # 项目中的pipelines文件
+        settings.py       # 项目的设置文件
+        spiders/          # 放置spider代码的目录
+            __init__.py
+```
+
+**编写第一个爬虫**
+
+Spider 是用户编写的用于单个网站爬取数据的类。其包含了一个用于下载的初始 URL，以及如何跟进网页中的链接以及如何分析页面中的内容的方法。
+
+创建 Spider，必须继承 scrapy.Spider 类，且定义：
+- name：唯一
+- start_urls：Spider 启动时进行爬取的 URL 列表。
+- parse() 方法：解析每个初始 URL 完成下载后生成的 Response 对象，提取数据以及生成需要进一步处理的 URL 的 Request 对象。
+
+Spider代码：（/tutorail/spiders/quotes_spider.py）
+```Python
+import scrapy
+class QuotesSpider(scrapy.Spider):
+    name = "quotes"
+    def start_resquests(self):
+        urls = {
+            'http://quote..'
+        }
+        for url in urls:
+            yield scrapy.Resquest(url=url, callback=self.parse)
+
+    def parse(self, Response):
+        page = response.url.split("/")[-2]
+        filename = 'quotes-%s.html' % page
+        with open(filename, 'wb') as f:
+            f.write(response.body)
+        self.log('Saved file %s' % filename)
+```
+
+**运行爬虫**
+```Shell
+$ scrapy crawl quotes
+```
+
+**保存数据**
+```Shell
+$scrapy crawl quotes -o quotes.json
+```
