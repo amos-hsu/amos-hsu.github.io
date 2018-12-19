@@ -274,3 +274,111 @@ $ scrapy crawl quotes
 ```Shell
 $scrapy crawl quotes -o quotes.json
 ```
+
+## 其他工具
+
+### xpath
+
+xpath 是一门在 XML 文档中查找信息的语言。
+
+xpath 有以下特点：
+1. xpath 使用路径表达式在 XML 和 HTML 中进行导航
+2. xpath 包含标准函数库
+3. xpath 符合 W3C 标准
+
+xpath 节点
+
+- 节点类型：元素 属性 文本 命名空间 处理指令 注释 文档根节点
+- 节点关系：父 子 同胞 先辈 后代
+
+xpath 语法
+
+使用路径表达式在 XML 文档中选取节点。节点是通过路径或者 step 来选取的。
+
+选取节点：
+
+| 路径表达式 |  描述  |
+| :----:  | :---: | 
+| article | 选取所有 article 元素的所有子节点|
+| /article| 选取根元素 article|
+| article/a|选取所有属于 article 的子元素的 a 元素|
+| //div   | 选取所有 div 子元素，不管他们在文档中出现的位置|
+| article//div| 选取所有属于 article 元素的后代的 div 元素，不管其出现位置|
+| @        | 选取属性                   |
+| //@class | 选取所有名为 class 的属性 |
+
+谓语：
+
+谓语用来查找某个特定的节点或者包含某个指定的值的节点。谓语被嵌在方括号中。
+
+| 路径表达式 |  描述  |
+| :----:  | :---: | 
+| /article/div[1] | 选取属于 article 子元素的第一个 div 元素 |
+| /article/div[last()] | 选取属于 article 子元素的最后一个 div 元素 |
+| /article/div[last()-1] | 选取属于 article 子元素的倒数第二个 div 元素 |
+| //div[@lang] | 选取所有拥有 lang 属性的 div 元素 |
+| //div[@lang='eng'] | 选取所有 lang 属性为 eng 的 div 元素 |
+
+选取未知节点：
+
+| 路径表达式 |	结果 |
+| :---: | :---: |
+| /bookstore/*	| 选取 bookstore 元素的所有子元素 |
+| //* | 选取文档中的所有元素 |
+| //title[@*] | 选取所有带有属性的 title 元素 |
+| /div/a \| //div/p | 选取所有 div 元素的 a 和 p 元素 |
+
+### CSS 选择器
+
+在 CSS 中，选择器时一种模式，用于选择需要添加样式的元素。
+
+| 选择器 |	藐视 |
+| :---: | :---: |
+| *     | 选取所有节点 |
+| #container | 选取 id 为 conatainer 的节点 |
+| .container | 选取所有 class 包含 container 的节点 |
+| li a | 选取所有 li 下的所有 a 节点 |
+| ul + p | 选择 ul 后面的所有 p 元素|
+| ul ~ p | 选取与 ul 相邻的所有 p 元素 |
+| div#container >ul | 选取 id 为 container 的 div 的第一个 ul 子元素 |
+| a[title] | 选取所有有 title 属性的 a 元素 |
+| a[href=“http://job.com”] | 选取所有 href 属性为... 值的 a 元素 | 
+| a[href*=“job”] | 选取所有 href 属性包含 job 的 a 元素 |
+| a[href^=“job”] | 选取所有 href 属性以 job 开头的 a 元素 |
+| a[href$=“.job”] | 选取所有 href 属性以 .job 开头的 a 元素 |
+| input[type=radio]:checked | 选择选中的 radio 的元素 |
+
+举例
+
+```Python
+class JobboleSpider(scrapy.Spider)
+    def parse(self, response):
+        """
+        获取页面内容
+        """
+        
+        # 通过xpath选取
+        title = response.xpath('//div[@class ="entry-header"]/h1/text()').extract_first("")
+        create_date = response.xpath('//p[@class="entry-meta-hide-on-mobile"]/text()').extract_first("").split()[0]
+        praise_num = response.xpath('//span[contains(@class, "vote-post-up")]/h10/text()').extract_first("")
+        fav_num = response.xpath('//span[contains(@class, "bookmark-btn")]/text()').extract_first("")
+        match_re = re.match(".*？(\d+).*", fav_num)
+        if match_re:
+            fav_num = match_re.group(1)
+        else:
+            fav_num = 0
+        comment_num = response.xpath('//a[@href="#article-comment"]/span/text()').extract_first()
+        match_re = re.match(".*？(\d+).*", comment_num)
+        if match_re:
+            comment_num = match_re.group(1)
+        else:
+            comment_num = 0
+        content = response.xpath("//div[@class='entry']").extract()[0]
+        tag_list = response.xpath('//p[@class="entry-meta-hide-on-mobile"]/a/text()').extract()
+        tag_list = [element for element in tag_list if not element.strip().endswith("评论") ]
+        tags = ",".join(tag_list)
+
+        #通过CSS选择器，CSS选择器更加简洁
+        title = response.css(".entry-header h1::text").extractextract_first("")
+        create_time = response.css("p.entry-meta-hide-on-mobile::text").extract_first("").splite()[0]
+```
