@@ -32,8 +32,8 @@ categories: Scrapy
 
 当然，人生苦短，我用 Python啦。相关的 Pyhton 库或者框架也很多。
 
-对于 scrapy VS request + beautifulsoup
-- request 和 beautifulsoup 都是库，而 scrapy 是框架
+对于 scrapy VS requests + beautifulsoup
+- requests 和 beautifulsoup 都是库，而 scrapy 是框架
 - scrapy 中可以加入 requests 和 beautifulsoup
 - scrapy 基于 twisted，性能是最大的优势
 - scrapy 易于扩展，提供了很多内置功能
