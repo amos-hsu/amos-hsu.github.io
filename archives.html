@@ -24,9 +24,8 @@ permalink: /archives/
             <div class="tag-list">
                 <span><a href="{{ site.baseurl}}{{ post.url }}">{{ post.title }}</a><span>
                 <small><span class="post-date">
-                    {% assign date_format = site.date_format.archive %}
-                    {{ post.date | date_to_string }} </span></small>
-                
+                {% assign date_format = site.date_format.archive %}
+                | {{ post.date | date_to_string }} </span></small>
             </div>
         {% endfor %}
         </ul>

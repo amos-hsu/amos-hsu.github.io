@@ -14,14 +14,14 @@ permalink: /categories/
             {% for node in pages_list %}
                 {% if node.title != null %}
                 {% if group == null or group == node.group %}
-                    <div class="tag-list">
-                        <span><a href="{{ site.baseurl}}{{ node.url }}">{{ node.title }}</a><span>
-                                <small><span class="post-date">
-                                        {% assign date_format = site.date_format.categories %}
-                                        {{ node.date | date: date_to_string }} </span></small>
+                <div class="tag-list">
+                    <span><a href="{{ site.baseurl}}{{ node.url }}">{{ node.title }}</a><span>
+                        <small><span class="post-date">
+                        {% assign date_format = site.date_format.categories %}
+                        | {{ node.date | date_to_string }} </span></small>
                 {% endif %}
                 {% endif %}
-                    </div>
+                </div>
             {% endfor %}
             {% assign pages_list = nil %}
         </ul>
